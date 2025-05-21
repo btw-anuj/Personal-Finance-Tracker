@@ -1,0 +1,20 @@
+<html><body>
+    <h2>📅 Monthly Financial Summary</h2>
+
+    {% if summaries %}
+        <ul>
+        {% for s in summaries %}
+            <li>
+                <strong>{{ s.month }}</strong><br>
+                ➕ Income: ₹{{ s.income }}<br>
+                ➖ Expense: ₹{{ s.expense }}<br>
+                ⭐ Top Category: {{ s.top_category }}
+            </li><br>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No transactions found for summary.</p>
+    {% endif %}
+
+    <a href="/dashboard">⬅ Back to Dashboard</a>
+</body></html>

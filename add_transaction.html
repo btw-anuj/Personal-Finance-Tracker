@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Transaction</title>
+</head>
+<body>
+    <h2>Add New Transaction</h2>
+    <form method="POST">
+        <label>Type:</label>
+        <select name="type">
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+        </select><br><br>
+
+        <label>Amount:</label>
+        <input type="number" name="amount" step="0.01" required><br><br>
+
+        <label>Category:</label>
+        <input type="text" name="category" required><br><br>
+
+        <label>Date:</label>
+        <input type="date" name="date"><br><br>
+
+        <button type="submit">Add Transaction</button>
+    </form>
+
+    <p><a href="/dashboard">Back to Dashboard</a></p>
+</body>
+</html>

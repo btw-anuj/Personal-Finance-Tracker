@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <h2>Dashboard</h2>
+    <p><strong>Total Income:</strong> ₹{{ income }}</p>
+    <p><strong>Total Expense:</strong> ₹{{ expense }}</p>
+    <p><strong>Balance:</strong> ₹{{ balance }}</p>
+
+    <p><a href="/add">Add Transaction</a> | <a href="/logout">Logout</a> | <a href="/summary">View Monthly Summary</a></p>
+
+{% if anomalies and anomalies|length > 0 %}
+    <div style="border: 1px solid red; padding: 10px; margin: 15px 0;">
+        <h3 style="color:red;">⚠️ Anomaly Alerts</h3>
+        <ul>
+            {% for txn in anomalies %}
+                <li><strong>Date:</strong> {{ txn.date }} | <strong>₹{{ txn.amount }}</strong> - {{ txn.category }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
+<hr>
+<h3>All Transactions</h3>
+    {% if transactions %}
+        <table border="1" cellpadding="5">
+            <tr>
+                <th>Type</th>
+                <th>Amount (₹)</th>
+                <th>Category</th>
+                <th>Date</th>
+            </tr>
+            {% for txn in transactions %}
+                <tr>
+                    <td>{{ txn.type }}</td>
+                    <td>{{ txn.amount }}</td>
+                    <td>{{ txn.category }}</td>
+                    <td>{{ txn.date }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No transactions yet.</p>
+    {% endif %}
+</body>
+</html>
